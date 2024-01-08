@@ -69,7 +69,7 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = BiographySlice;
+type PageDocumentDataSlicesSlice = TeckListSlice | BiographySlice;
 
 /**
  * Content for Page documents
@@ -436,6 +436,76 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Primary content in *TechList → Primary*
+ */
+export interface TeckListSliceDefaultPrimary {
+  /**
+   * Heading field in *TechList → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: teck_list.primary.heading
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  heading: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *TechList → Items*
+ */
+export interface TeckListSliceDefaultItem {
+  /**
+   * Tech Name field in *TechList → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: teck_list.items[].tech_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  tech_name: prismic.KeyTextField;
+
+  /**
+   * Tech Color field in *TechList → Items*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: teck_list.items[].tech_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  tech_color: prismic.ColorField;
+}
+
+/**
+ * Default variation for TechList Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TeckListSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TeckListSliceDefaultPrimary>,
+  Simplify<TeckListSliceDefaultItem>
+>;
+
+/**
+ * Slice variation for *TechList*
+ */
+type TeckListSliceVariation = TeckListSliceDefault;
+
+/**
+ * TechList Shared Slice
+ *
+ * - **API ID**: `teck_list`
+ * - **Description**: TeckList
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TeckListSlice = prismic.SharedSlice<
+  "teck_list",
+  TeckListSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -464,6 +534,11 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      TeckListSlice,
+      TeckListSliceDefaultPrimary,
+      TeckListSliceDefaultItem,
+      TeckListSliceVariation,
+      TeckListSliceDefault,
     };
   }
 }

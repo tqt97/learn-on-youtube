@@ -17,6 +17,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "teck_list": {
+              "type": "SharedSlice"
+            },
             "biography": {
               "type": "SharedSlice"
             }
