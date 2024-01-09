@@ -1,7 +1,7 @@
 import React from "react";
 import { createClient } from "@/prismicio";
 
-import NavBar from "@/components/NavBar";
+import Nav from "@/components/Nav";
 
 export default async function Header() {
     const client = createClient();
@@ -9,7 +9,7 @@ export default async function Header() {
 
     return (
         <header className="top-0 z-50 mx-auto max-w-7xl md:sticky md:top-4">
-            <NavBar settings={settings} />
+            <Nav settings={settings} />
         </header>
     );
 }

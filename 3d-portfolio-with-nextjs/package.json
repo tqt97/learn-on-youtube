@@ -22,6 +22,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.12.0",
+    "slicemachine": "^0.0.1",
     "three": "^0.160.0"
   },
   "devDependencies": {

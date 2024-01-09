@@ -9,7 +9,7 @@ import { MdMenu, MdClose } from "react-icons/md";
 import Button from "./Button";
 import { usePathname } from "next/navigation";
 
-export default function NavBar({
+export default function Nav({
     settings,
 }: {
     settings: Content.SettingsDocument;
@@ -45,7 +45,7 @@ export default function NavBar({
                     >
                         <MdClose />
                     </button>
-                    {/* {settings.data.nav_item.map(({ link, label }, index) => (
+                    {settings.data.nav_item.map(({ link, label }, index) => (
                         <React.Fragment key={label}>
                             <li className="first:mt-8">
                                 <PrismicNextLink
@@ -80,7 +80,7 @@ export default function NavBar({
                                 </span>
                             )}
                         </React.Fragment>
-                    ))} */}
+                    ))}
                     <li>
                         <Button
                             linkField={settings.data.cta_link}
